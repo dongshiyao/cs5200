@@ -78,7 +78,9 @@ CREATE TABLE Player(
   Weight INT,
   Age INT,
   Photo VARCHAR(255),
+  Overall INT,
   StatID INT DEFAULT NULL,
+  PositionScoreID INT,
   CONSTRAINT pk_Player_PlayerID PRIMARY KEY (PlayerID)
 );
 
@@ -123,7 +125,7 @@ CREATE TABLE NonGKStat (
   DefendingID INT,
   PhysicalityID INT,
   PassingID INT,
-  PositionScoreID INT,
+  #PositionScoreID INT,
   CONSTRAINT pk_NonGKStat_StatID PRIMARY KEY (StatID),
   CONSTRAINT fk_NonGKStat_StatID FOREIGN KEY (StatID)
     REFERENCES Stat(StatID)
@@ -336,10 +338,15 @@ CREATE TABLE PositionScore (
   LCM INT,
   LDM INT,
   LCB INT,
+  #non_gk player do not have gk score
   GK INT,
-  StatID BIGINT,
+  #StatID BIGINT,
+  PlayerID BIGINT,
   CONSTRAINT pk_PositionScore_PositionScoreID PRIMARY KEY (PositionScoreID),
-  CONSTRAINT fk_PositionScore_StatID FOREIGN KEY (StatID)
-    REFERENCES NonGKStat(StatID)
+  -- CONSTRAINT fk_PositionScore_StatID FOREIGN KEY (StatID)
+--     REFERENCES NonGKStat(StatID)
+--     ON UPDATE CASCADE ON DELETE CASCADE
+  CONSTRAINT fk_PositionScore_PlayerID FOREIGN KEY(PlayerID)
+    REFERENCES Player(PlayerID)
     ON UPDATE CASCADE ON DELETE CASCADE
 );

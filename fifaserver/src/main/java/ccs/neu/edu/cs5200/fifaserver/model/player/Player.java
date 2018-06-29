@@ -12,9 +12,10 @@ public class Player {
   private int weight;
   private int age;
   private int statId;
+  private int positionScoreId;
 
   public Player(int playerId, String playerName, String nation, String club, String league,
-                int skills, int weakFoot, int height, int weight, int age, int statId) {
+                int skills, int weakFoot, int height, int weight, int age, int statId, int positionScoreId) {
     this.playerId = playerId;
     this.playerName = playerName;
     this.nation = nation;
@@ -26,6 +27,7 @@ public class Player {
     this.weight = weight;
     this.age = age;
     this.statId = statId;
+    this.positionScoreId = positionScoreId;
   }
 
   public int getPlayerId() {
@@ -114,5 +116,13 @@ public class Player {
 
   public void setStatId(int statId) {
     this.statId = statId;
+  }
+
+  public int getPositionScoreId() {
+    return positionScoreId;
+  }
+
+  public void setPositionScoreId(int positionScoreId) {
+    this.positionScoreId = positionScoreId;
   }
 }
