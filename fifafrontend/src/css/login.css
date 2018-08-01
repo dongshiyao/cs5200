@@ -1,0 +1,46 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.login_bg {
+  margin: 0;
+    /* The image used */
+    background-image: url("../image/login_bg.png");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.login_card{
+    margin: auto;
+    width: 30%;
+    height: 100%;
+    /* border: 3px solid green; */
+    padding: 60px;
+    padding-top: 150px;
+}
+
+.footer{
+  margin: auto;
+  margin-top: 150px;
+  color: grey;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.header {
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.label {
+  color: white;
+}

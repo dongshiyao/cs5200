@@ -1,0 +1,17 @@
+.searching_bar_container {
+  /* margin-top: 20px;
+  margin-bottom: 20px; */
+  /* margin:20px; */
+  background-color: #F0ECE8;
+  /* padding:20px; */
+}
+
+.searching_input {
+  /* margin:20px; */
+  padding: 10px;
+}
+
+.filter_summary {
+  padding-left: 10px;
+  padding-bottom: 5px;
+}

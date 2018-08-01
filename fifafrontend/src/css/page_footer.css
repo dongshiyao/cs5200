@@ -1,0 +1,136 @@
+#menu-footer-area {
+  background-color: #F0ECE8;
+  display: inline-block;
+  width: 100%;
+  /* color:#ffffff; */
+}
+
+#menu-footer-inner-container {
+  padding: 15px;
+}
+
+#footer-logo{
+  float:left;
+  width: 33.33%;
+  width: calc(100%  /3);
+}
+
+#footer-logo-mobile{
+  width: 100%;
+}
+
+#footer-logo a{
+  display:flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+#footer-logo-mobile a{
+  display:flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#footer-logo-svg{
+  width:100%;
+  height:100%;
+  padding-top: 15px;
+  max-width: 300px;
+}
+
+#footer-nav{
+  float:left;
+  width: 66.66%;
+  width: calc(100% / 3 * 2);
+}
+
+#footer-nav-mobile{
+  width: 100%;
+}
+
+#footer-menu-links{
+  text-align: left;
+  -webkit-column-break-inside: avoid;
+  display: table;
+}
+
+#footer-menu-links ul{
+  display: table;
+  clear: both;
+}
+
+#footer-menu-links li{
+  -webkit-column-break-inside: avoid;
+  display: inline;
+  color:inherit;
+  font-family: "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+#footer-menu-links a{
+  /* color: #ffffff; */
+  text-decoration: none;
+}
+
+#footer-menu-links a:hover{
+  text-decoration: underline;
+}
+
+#menu-item-1::after{
+  content: "•";
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 12px;
+}
+
+#menu-item-2::after{
+  content: "•";
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 12px;
+}
+
+#menu-item-3::after{
+  content: "•";
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 12px;
+}
+
+#menu-item-4::after{
+  content: "•";
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 12px;
+}
+
+#footer-address p{
+  font-family: "HelveticaNeueW01-45Ligh", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 12px;
+  text-align: left;
+  padding-left: 40px;
+}
+
+#footer-address .tel{
+  /* color: #ffffff; */
+  text-decoration: none;
+}
+
+#footer-address .tel:hover{
+  /* color: #ffffff; */
+  text-decoration: underline;
+}
+
+#footer-address .tel::before{
+  content: "•";
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 12px;
+}
+
+.st2{
+  /* fill:#ffffff; */
+}

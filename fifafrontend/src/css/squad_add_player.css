@@ -1,0 +1,41 @@
+.container {
+  height: 100%;
+  padding: 0;
+}
+
+.squad_bg {
+  margin: 0;
+    /* The image used */
+    background-image: url("../image/grass.png");
+
+    /* Full height */
+    width: 100%;
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: absolute;
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+
+}
+
+.formation {
+  /* align-content: center; */
+  /* float: center; */
+  /* text-align: center; */
+  /* align-items: center; */
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.position_tag{
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: grey;
+  text-align: center;
+}
