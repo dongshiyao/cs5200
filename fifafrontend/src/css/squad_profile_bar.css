@@ -1,0 +1,22 @@
+.player_header {
+  margin: 20px;
+
+}
+
+.searching_bar_container {
+
+  background-color: grey;
+}
+
+.searching_input {
+  padding: 10px;
+}
+
+.filter_summary {
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+
+.info {
+  padding-right: 10px;
+}
