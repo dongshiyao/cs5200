@@ -24,11 +24,16 @@ class SearchingInput extends Component {
     const store = this.props.store;
     e.preventDefault();
     const { name } = this.state;
-    store.dispatch(SearchingActions.addSearchingPlayer(name));
-    store.dispatch(SearchingActions.addSearchingNation('All'));
-    store.dispatch(SearchingActions.addSearchingLeague('All'));
-    store.dispatch(SearchingActions.addSearchingPosition('All'));
-    store.dispatch(SearchingActions.addSearchingClub('All'));
+    if (name === '') {
+      store.dispatch(SearchingActions.removeSearchingPlayer('remove'));
+    } else {
+      store.dispatch(SearchingActions.addSearchingPlayer(name));
+    }
+
+    // store.dispatch(SearchingActions.addSearchingNation('All'));
+    // store.dispatch(SearchingActions.addSearchingLeague('All'));
+    // store.dispatch(SearchingActions.addSearchingPosition('All'));
+    // store.dispatch(SearchingActions.addSearchingClub('All'));
   }
 
   render() {

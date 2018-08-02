@@ -93,22 +93,22 @@ class SearchingDropdown extends Component {
     switch (label) {
       case "Position": {
         store.dispatch(SearchingActions.addSearchingPosition(selected));
-        store.dispatch(SearchingActions.removeSearchingPlayer('remove'));
+        // store.dispatch(SearchingActions.removeSearchingPlayer('remove'));
         break;
       }
       case "Nation": {
         store.dispatch(SearchingActions.addSearchingNation(selected));
-        store.dispatch(SearchingActions.removeSearchingPlayer('remove'));
+        // store.dispatch(SearchingActions.removeSearchingPlayer('remove'));
         break;
       }
       case "League": {
         store.dispatch(SearchingActions.addSearchingLeague(selected));
-        store.dispatch(SearchingActions.removeSearchingPlayer('remove'));
+        // store.dispatch(SearchingActions.removeSearchingPlayer('remove'));
         break;
       }
       case "Club": {
         store.dispatch(SearchingActions.addSearchingClub(selected));
-        store.dispatch(SearchingActions.removeSearchingPlayer('remove'));
+        // store.dispatch(SearchingActions.removeSearchingPlayer('remove'));
         break;
       }
     }

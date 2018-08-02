@@ -32,7 +32,6 @@ class SquadAddPlayer extends Component {
   }
 
   componentWillMount() {
-    console.log('!!!!!!!!!!')
     if (this.state.squad) {
       let {
         GKPlayer,
@@ -176,340 +175,428 @@ class SquadAddPlayer extends Component {
   onClick = (player, position) => {
     const { store } = this.props;
     const { squad } = this.state;
-    store.dispatch(SquadActions.squadSearchSwitch(this.state.showSearch));
-    switch (position) {
-      case 'GK': {
-        this.setState({
-          onPos: 'GK'
-        });
-        store.dispatch(SquadActions.addGK(player));
-        if (player) {
-          const url = "http://localhost:8080/squad/addPlayerToSquad";
-          const squadPlayerJunction = {
-            squadId: squad.squadId,
-            playerId: player.playerId,
-            posNumber: 'ELEVEN'
-          };
-          axios.post(url, squadPlayerJunction)
-          .then(function (response) {
-            const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
-            axios.get(url)
-            .then(function (response) {
-              store.dispatch(SquadActions.createSquad(response.data));
-            })
-            .catch(function (error) {
-              console.log(error);
-            })
-          })
-          .catch(function (error) {
-            console.log(error);
+    if (!this.state.showSearch) {
+      console.log('!!!!!', player);
+      console.log(this.state.showSearch);
+      let posNumber = '';
+      switch (position) {
+        case "GK": {
+          posNumber = 'ELEVEN';
+          this.setState({
+            onPos: 'GK'
           });
+          break;
         }
-        break;
-      }
-      case 'ST': {
-        this.setState({
-          onPos: 'ST'
-        });
-        store.dispatch(SquadActions.addST(player));
-        if (player) {
-          const url = "http://localhost:8080/squad/addPlayerToSquad";
-          const squadPlayerJunction = {
-            squadId: squad.squadId,
-            playerId: player.playerId,
-            posNumber: 'ONE'
-          };
-          axios.post(url, squadPlayerJunction)
-          .then(function (response) {
-            console.log(response);
-            const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
-            axios.get(url)
-            .then(function (response) {
-              store.dispatch(SquadActions.createSquad(response.data));
-            })
-            .catch(function (error) {
-              console.log(error);
-            })
-          })
-          .catch(function (error) {
-            console.log(error);
+        case "ST": {
+          posNumber = 'ONE';
+          this.setState({
+            onPos: 'ST'
           });
+          break;
         }
-        break;
-      }
-      case 'CF': {
-        this.setState({
-          onPos: 'CF'
-        });
-        store.dispatch(SquadActions.addCF(player));
-        if (player) {
-          const url = "http://localhost:8080/squad/addPlayerToSquad";
-          const squadPlayerJunction = {
-            squadId: squad.squadId,
-            playerId: player.playerId,
-            posNumber: 'FOUR'
-          };
-          axios.post(url, squadPlayerJunction)
-          .then(function (response) {
-            console.log(response);
-            const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
-            axios.get(url)
-            .then(function (response) {
-              store.dispatch(SquadActions.createSquad(response.data));
-            })
-            .catch(function (error) {
-              console.log(error);
-            })
-          })
-          .catch(function (error) {
-            console.log(error);
+        case "LM": {
+          posNumber = 'TWO';
+          this.setState({
+            onPos: 'LM'
           });
+          break;
         }
-        break;
-      }
-      case 'LM': {
-        this.setState({
-          onPos: 'LM'
-        });
-        store.dispatch(SquadActions.addLM(player));
-        if (player) {
-          const url = "http://localhost:8080/squad/addPlayerToSquad";
-          const squadPlayerJunction = {
-            squadId: squad.squadId,
-            playerId: player.playerId,
-            posNumber: 'TWO'
-          };
-          axios.post(url, squadPlayerJunction)
-          .then(function (response) {
-            console.log(response);
-            const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
-            axios.get(url)
-            .then(function (response) {
-              store.dispatch(SquadActions.createSquad(response.data));
-            })
-            .catch(function (error) {
-              console.log(error);
-            })
-          })
-          .catch(function (error) {
-            console.log(error);
+        case "LCM": {
+          posNumber = 'THREE';
+          this.setState({
+            onPos: 'LCM'
           });
+          break;
         }
-        break;
-      }
-      case 'LCM': {
-        this.setState({
-          onPos: 'LCM'
-        });
-        store.dispatch(SquadActions.addLCM(player));
-        if (player) {
-          const url = "http://localhost:8080/squad/addPlayerToSquad";
-          const squadPlayerJunction = {
-            squadId: squad.squadId,
-            playerId: player.playerId,
-            posNumber: 'THREE'
-          };
-          axios.post(url, squadPlayerJunction)
-          .then(function (response) {
-            console.log(response);
-            const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
-            axios.get(url)
-            .then(function (response) {
-              store.dispatch(SquadActions.createSquad(response.data));
-            })
-            .catch(function (error) {
-              console.log(error);
-            })
-          })
-          .catch(function (error) {
-            console.log(error);
+        case "CF": {
+          posNumber = 'FOUR';
+          this.setState({
+            onPos: 'CF'
           });
+          break;
         }
-        break;
-      }
-      case 'RCM': {
-        this.setState({
-          onPos: 'RCM'
-        });
-        store.dispatch(SquadActions.addRCM(player));
-        if (player) {
-          const url = "http://localhost:8080/squad/addPlayerToSquad";
-          const squadPlayerJunction = {
-            squadId: squad.squadId,
-            playerId: player.playerId,
-            posNumber: 'FIVE'
-          };
-          axios.post(url, squadPlayerJunction)
-          .then(function (response) {
-            console.log(response);
-            const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
-            axios.get(url)
-            .then(function (response) {
-              store.dispatch(SquadActions.createSquad(response.data));
-            })
-            .catch(function (error) {
-              console.log(error);
-            })
-          })
-          .catch(function (error) {
-            console.log(error);
+        case "RCM": {
+          posNumber = 'FIVE';
+          this.setState({
+            onPos: 'RCM'
           });
+          break;
         }
-        break;
-      }
-      case 'RM': {
-        this.setState({
-          onPos: 'RM'
-        });
-        store.dispatch(SquadActions.addRM(player));
-        if (player) {
-          const url = "http://localhost:8080/squad/addPlayerToSquad";
-          const squadPlayerJunction = {
-            squadId: squad.squadId,
-            playerId: player.playerId,
-            posNumber: 'SIX'
-          };
-          axios.post(url, squadPlayerJunction)
-          .then(function (response) {
-            console.log(response);
-            const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
-            axios.get(url)
-            .then(function (response) {
-              store.dispatch(SquadActions.createSquad(response.data));
-            })
-            .catch(function (error) {
-              console.log(error);
-            })
-          })
-          .catch(function (error) {
-            console.log(error);
+        case "RM": {
+          posNumber = 'SIX';
+          this.setState({
+            onPos: 'RM'
           });
+          break;
         }
-        break;
-      }
-      case 'LB': {
-        this.setState({
-          onPos: 'LB'
-        });
-        store.dispatch(SquadActions.addLB(player));
-        if (player) {
-          const url = "http://localhost:8080/squad/addPlayerToSquad";
-          const squadPlayerJunction = {
-            squadId: squad.squadId,
-            playerId: player.playerId,
-            posNumber: 'SEVEN'
-          };
-          axios.post(url, squadPlayerJunction)
-          .then(function (response) {
-            console.log(response);
-            const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
-            axios.get(url)
-            .then(function (response) {
-              store.dispatch(SquadActions.createSquad(response.data));
-            })
-            .catch(function (error) {
-              console.log(error);
-            })
-          })
-          .catch(function (error) {
-            console.log(error);
+        case "LB": {
+          posNumber = 'SEVEN';
+          this.setState({
+            onPos: 'LB'
           });
+          break;
         }
-        break;
-      }
-      case 'LCB': {
-        this.setState({
-          onPos: 'LCB'
-        });
-        store.dispatch(SquadActions.addLCB(player));
-        if (player) {
-          const url = "http://localhost:8080/squad/addPlayerToSquad";
-          const squadPlayerJunction = {
-            squadId: squad.squadId,
-            playerId: player.playerId,
-            posNumber: 'EIGHT'
-          };
-          axios.post(url, squadPlayerJunction)
-          .then(function (response) {
-            console.log(response);
-            const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
-            axios.get(url)
-            .then(function (response) {
-              store.dispatch(SquadActions.createSquad(response.data));
-            })
-            .catch(function (error) {
-              console.log(error);
-            })
-          })
-          .catch(function (error) {
-            console.log(error);
+        case "LCB": {
+          posNumber = 'EIGHT';
+          this.setState({
+            onPos: 'LCB'
           });
+          break;
         }
-        break;
-      }
-      case 'RCB': {
-        this.setState({
-          onPos: 'RCB'
-        });
-        store.dispatch(SquadActions.addRCB(player));
-        if (player) {
-          const url = "http://localhost:8080/squad/addPlayerToSquad";
-          const squadPlayerJunction = {
-            squadId: squad.squadId,
-            playerId: player.playerId,
-            posNumber: 'NINE'
-          };
-          axios.post(url, squadPlayerJunction)
-          .then(function (response) {
-            console.log(response);
-            const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
-            axios.get(url)
-            .then(function (response) {
-              store.dispatch(SquadActions.createSquad(response.data));
-            })
-            .catch(function (error) {
-              console.log(error);
-            })
-          })
-          .catch(function (error) {
-            console.log(error);
+        case "RCB": {
+          posNumber = 'NINE';
+          this.setState({
+            onPos: 'RCB'
           });
+          break;
         }
-        break;
-      }
-      case 'RB': {
-        this.setState({
-          onPos: 'RB'
-        });
-        store.dispatch(SquadActions.addRB(player));
-        if (player) {
-          const url = "http://localhost:8080/squad/addPlayerToSquad";
-          const squadPlayerJunction = {
-            squadId: squad.squadId,
-            playerId: player.playerId,
-            posNumber: 'TEN'
-          };
-          axios.post(url, squadPlayerJunction)
-          .then(function (response) {
-            console.log(response);
-            const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
-            axios.get(url)
-            .then(function (response) {
-              store.dispatch(SquadActions.createSquad(response.data));
-            })
-            .catch(function (error) {
-              console.log(error);
-            })
-          })
-          .catch(function (error) {
-            console.log(error);
+        case "RB": {
+          posNumber = 'TEN';
+          this.setState({
+            onPos: 'RB'
           });
+          break;
         }
-        break;
+        default:
+          posNumber = null;
       }
-      default:
-        console.log('SquadAddPlayer, position invalid');
+      if (player) {
+        console.log('remove existed player here');
+        const oldSquadPlayerJunction = {
+          squadId: squad.squadId,
+          playerId: player.playerId,
+          posNumber: posNumber
+        }
+        console.log('oldSquadPlayerJunction', oldSquadPlayerJunction);
+        const removeUrl = "http://localhost:8080/squad/removePlayerFromSquad";
+        axios.delete(removeUrl, { data: oldSquadPlayerJunction })
+        .then(function (res) {
+          console.log(res.data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
+
     }
+
+    if (this.state.showSearch) {
+      console.log('add and update new player');
+      console.log(position);
+      switch (position) {
+        case 'GK': {
+          if (player) {
+            const url = "http://localhost:8080/squad/addPlayerToSquad";
+            const squadPlayerJunction = {
+              squadId: squad.squadId,
+              playerId: player.playerId,
+              posNumber: 'ELEVEN'
+            };
+            axios.post(url, squadPlayerJunction)
+            .then(function (response) {
+              const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
+              axios.get(url)
+              .then(function (response) {
+                store.dispatch(SquadActions.addGK(player));
+                store.dispatch(SquadActions.createSquad(response.data));
+              })
+              .catch(function (error) {
+                console.log(error);
+              })
+            })
+            .catch(function (error) {
+              console.log(error);
+              alert('Cannot add duplicate player to a squad!');
+            });
+          }
+          break;
+        }
+        case 'ST': {
+          if (player) {
+            const url = "http://localhost:8080/squad/addPlayerToSquad";
+            const squadPlayerJunction = {
+              squadId: squad.squadId,
+              playerId: player.playerId,
+              posNumber: 'ONE'
+            };
+            axios.post(url, squadPlayerJunction)
+            .then(function (response) {
+              console.log(response);
+              const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
+              axios.get(url)
+              .then(function (response) {
+                store.dispatch(SquadActions.addST(player));
+                store.dispatch(SquadActions.createSquad(response.data));
+              })
+              .catch(function (error) {
+                console.log(error);
+              })
+            })
+            .catch(function (error) {
+              console.log(error);
+              alert('Cannot add duplicate player to a squad!');
+            });
+          }
+          break;
+        }
+        case 'CF': {
+          if (player) {
+            const url = "http://localhost:8080/squad/addPlayerToSquad";
+            const squadPlayerJunction = {
+              squadId: squad.squadId,
+              playerId: player.playerId,
+              posNumber: 'FOUR'
+            };
+            axios.post(url, squadPlayerJunction)
+            .then(function (response) {
+              console.log(response);
+              const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
+              axios.get(url)
+              .then(function (response) {
+                store.dispatch(SquadActions.addCF(player));
+                store.dispatch(SquadActions.createSquad(response.data));
+              })
+              .catch(function (error) {
+                console.log(error);
+              })
+            })
+            .catch(function (error) {
+              console.log(error);
+              alert('Cannot add duplicate player to a squad!');
+            });
+          }
+          break;
+        }
+        case 'LM': {
+          if (player) {
+            const url = "http://localhost:8080/squad/addPlayerToSquad";
+            const squadPlayerJunction = {
+              squadId: squad.squadId,
+              playerId: player.playerId,
+              posNumber: 'TWO'
+            };
+            axios.post(url, squadPlayerJunction)
+            .then(function (response) {
+              console.log(response);
+              const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
+              axios.get(url)
+              .then(function (response) {
+                store.dispatch(SquadActions.addLM(player));
+                store.dispatch(SquadActions.createSquad(response.data));
+              })
+              .catch(function (error) {
+                console.log(error);
+              })
+            })
+            .catch(function (error) {
+              console.log(error);
+              alert('Cannot add duplicate player to a squad!');
+            });
+          }
+          break;
+        }
+        case 'LCM': {
+          if (player) {
+            const url = "http://localhost:8080/squad/addPlayerToSquad";
+            const squadPlayerJunction = {
+              squadId: squad.squadId,
+              playerId: player.playerId,
+              posNumber: 'THREE'
+            };
+            axios.post(url, squadPlayerJunction)
+            .then(function (response) {
+              console.log(response);
+              const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
+              axios.get(url)
+              .then(function (response) {
+                store.dispatch(SquadActions.addLCM(player));
+                store.dispatch(SquadActions.createSquad(response.data));
+              })
+              .catch(function (error) {
+                console.log(error);
+              })
+            })
+            .catch(function (error) {
+              console.log(error);
+              alert('Cannot add duplicate player to a squad!');
+            });
+          }
+          break;
+        }
+        case 'RCM': {
+          if (player) {
+            const url = "http://localhost:8080/squad/addPlayerToSquad";
+            const squadPlayerJunction = {
+              squadId: squad.squadId,
+              playerId: player.playerId,
+              posNumber: 'FIVE'
+            };
+            axios.post(url, squadPlayerJunction)
+            .then(function (response) {
+              console.log(response);
+              const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
+              axios.get(url)
+              .then(function (response) {
+                store.dispatch(SquadActions.addRCM(player));
+                store.dispatch(SquadActions.createSquad(response.data));
+              })
+              .catch(function (error) {
+                console.log(error);
+              })
+            })
+            .catch(function (error) {
+              console.log(error);
+              alert('Cannot add duplicate player to a squad!');
+            });
+          }
+          break;
+        }
+        case 'RM': {
+          if (player) {
+            const url = "http://localhost:8080/squad/addPlayerToSquad";
+            const squadPlayerJunction = {
+              squadId: squad.squadId,
+              playerId: player.playerId,
+              posNumber: 'SIX'
+            };
+            axios.post(url, squadPlayerJunction)
+            .then(function (response) {
+              console.log(response);
+              const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
+              axios.get(url)
+              .then(function (response) {
+                store.dispatch(SquadActions.addRM(player));
+                store.dispatch(SquadActions.createSquad(response.data));
+              })
+              .catch(function (error) {
+                console.log(error);
+              })
+            })
+            .catch(function (error) {
+              console.log(error);
+              alert('Cannot add duplicate player to a squad!');
+            });
+          }
+          break;
+        }
+        case 'LB': {
+          if (player) {
+            const url = "http://localhost:8080/squad/addPlayerToSquad";
+            const squadPlayerJunction = {
+              squadId: squad.squadId,
+              playerId: player.playerId,
+              posNumber: 'SEVEN'
+            };
+            axios.post(url, squadPlayerJunction)
+            .then(function (response) {
+              console.log(response);
+              const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
+              axios.get(url)
+              .then(function (response) {
+                store.dispatch(SquadActions.addLB(player));
+                store.dispatch(SquadActions.createSquad(response.data));
+              })
+              .catch(function (error) {
+                console.log(error);
+              })
+            })
+            .catch(function (error) {
+              console.log(error);
+              alert('Cannot add duplicate player to a squad!');
+            });
+          }
+          break;
+        }
+        case 'LCB': {
+          if (player) {
+            const url = "http://localhost:8080/squad/addPlayerToSquad";
+            const squadPlayerJunction = {
+              squadId: squad.squadId,
+              playerId: player.playerId,
+              posNumber: 'EIGHT'
+            };
+            axios.post(url, squadPlayerJunction)
+            .then(function (response) {
+              console.log(response);
+              const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
+              axios.get(url)
+              .then(function (response) {
+                store.dispatch(SquadActions.addLCB(player));
+                store.dispatch(SquadActions.createSquad(response.data));
+              })
+              .catch(function (error) {
+                console.log(error);
+              })
+            })
+            .catch(function (error) {
+              console.log(error);
+              alert('Cannot add duplicate player to a squad!');
+            });
+          }
+          break;
+        }
+        case 'RCB': {
+          if (player) {
+            const url = "http://localhost:8080/squad/addPlayerToSquad";
+            const squadPlayerJunction = {
+              squadId: squad.squadId,
+              playerId: player.playerId,
+              posNumber: 'NINE'
+            };
+            axios.post(url, squadPlayerJunction)
+            .then(function (response) {
+              console.log(response);
+              const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
+              axios.get(url)
+              .then(function (response) {
+                store.dispatch(SquadActions.addRCB(player));
+                store.dispatch(SquadActions.createSquad(response.data));
+              })
+              .catch(function (error) {
+                console.log(error);
+              })
+            })
+            .catch(function (error) {
+              console.log(error);
+              alert('Cannot add duplicate player to a squad!');
+            });
+          }
+          break;
+        }
+        case 'RB': {
+          if (player) {
+            const url = "http://localhost:8080/squad/addPlayerToSquad";
+            const squadPlayerJunction = {
+              squadId: squad.squadId,
+              playerId: player.playerId,
+              posNumber: 'TEN'
+            };
+            axios.post(url, squadPlayerJunction)
+            .then(function (response) {
+              console.log(response);
+              const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squad.squadId;
+              axios.get(url)
+              .then(function (response) {
+                store.dispatch(SquadActions.addRB(player));
+                store.dispatch(SquadActions.createSquad(response.data));
+              })
+              .catch(function (error) {
+                console.log(error);
+              })
+            })
+            .catch(function (error) {
+              console.log(error);
+              alert('Cannot add duplicate player to a squad!');
+            });
+          }
+          break;
+        }
+        default:
+          console.log('SquadAddPlayer, position invalid');
+      }
+    }
+
+    store.dispatch(SquadActions.squadSearchSwitch(this.state.showSearch));
   }
 
   render() {

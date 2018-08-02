@@ -15,6 +15,7 @@ import {
 
 import * as UserActions from '../redux/user_actions';
 import * as SquadActions from '../redux/squad_actions';
+import * as SearchingActions from '../redux/searching_actions';
 
 class PageNavbar extends Component {
 
@@ -47,11 +48,13 @@ class PageNavbar extends Component {
     const { store } = this.props;
     store.dispatch(UserActions.logout());
     store.dispatch(UserActions.changeContent('LOGIN'));
+    store.dispatch(SearchingActions.removeAllFilters());
   }
 
   onSwitch(destination) {
     const { store } = this.props;
     store.dispatch(UserActions.changeContent(destination));
+    store.dispatch(SearchingActions.removeAllFilters());
     store.dispatch(SquadActions.removeSquad());
   }
 

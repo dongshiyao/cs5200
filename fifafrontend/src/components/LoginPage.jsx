@@ -57,7 +57,7 @@ class LoginPage extends Component {
       });
     })
     .catch(function (error) {
-      console.log(error);
+      alert("The username and password you entered did not match our records. Please double check and try again.");
     });
 
   }

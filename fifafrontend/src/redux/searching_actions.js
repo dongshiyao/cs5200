@@ -1,3 +1,9 @@
+export function removeAllFilters() {
+	return {
+		type: 'REMOVE_ALL_FILTERS'
+	}
+}
+
 export function addSearchingPlayer(player) {
   // console.log('action', player);
 	return {

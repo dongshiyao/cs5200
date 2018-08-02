@@ -31,25 +31,25 @@ class SquadTable extends Component {
     });
   }
 
-  getTdProps = (state, rowInfo, column, instance) => {
-    return {
-      onClick: (e, handleOriginal) => {
-        console.log("It was in this row:", rowInfo);
-
-        const squadId = rowInfo.row.squadId;
-        console.log(squadId);
-        const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squadId;
-        axios.get(url).then(res => {
-          const squad = res.data
-          const { store } = this.props;
-          store.dispatch(SquadActions.createSquad(squad));
-          store.dispatch(UserActions.changeContent('SQUADBUILDER'));
-        }, err => {
-          console.log("Get squads got an error: ", err);
-        });
-      }
-    };
-  }
+  // getTdProps = (state, rowInfo, column, instance) => {
+  //   return {
+  //     onClick: (e, handleOriginal) => {
+  //       console.log("It was in this row:", rowInfo);
+  //
+  //       const squadId = rowInfo.row.squadId;
+  //       console.log(squadId);
+  //       const url = "http://localhost:8080/squad/readSquadInfoBySquadId?squad_id=" + squadId;
+  //       axios.get(url).then(res => {
+  //         const squad = res.data
+  //         const { store } = this.props;
+  //         store.dispatch(SquadActions.createSquad(squad));
+  //         store.dispatch(UserActions.changeContent('SQUADBUILDER'));
+  //       }, err => {
+  //         console.log("Get squads got an error: ", err);
+  //       });
+  //     }
+  //   };
+  // }
 
   render() {
     // const { data } = this.state;

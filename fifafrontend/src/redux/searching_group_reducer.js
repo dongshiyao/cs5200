@@ -8,6 +8,17 @@ export default function searchingGroupReducer( state = {
 	error: null
 }, action) {
 	switch (action.type) {
+		case "REMOVE_ALL_FILTERS": {
+			return {
+				...state,
+				searchingPlayer: null,
+				searchingPosition: null,
+				searchingNation: null,
+				searchingClub: null,
+			  searchingLeague: null,
+			  playerResults: []
+			}
+		}
 		case "ADD_SEARCHING_PLAYER": {
 			return {
 				...state,
