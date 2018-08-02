@@ -8,7 +8,8 @@ const mapStateToProps = (state) => {
       positionFilters: state.searchingGroupReducer.searchingPosition,
       nationFilters: state.searchingGroupReducer.searchingNation,
       leagueFilters: state.searchingGroupReducer.searchingLeague,
-      clubFilters: state.searchingGroupReducer.searchingClub
+      clubFilters: state.searchingGroupReducer.searchingClub,
+      pageContent: state.userReducer.pageContent
     }
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Form, FormGroup, Input } from 'reactstrap';
+import { Form, FormGroup, Input, Button } from 'reactstrap';
 import * as SearchingActions from '../redux/searching_actions';
 
 class SearchingInput extends Component {
@@ -8,48 +8,38 @@ class SearchingInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
+      name: '',
+      playerSelected: this.props.playerSelected
     }
-    this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      playerSelected: nextProps.playerSelected
+    });
   }
 
   handleChange(e) {
     const { name, value } = e.target;
+    const { store } = this.props;
     this.setState({ [name]: value });
 
-  }
-
-  onSubmit = (e) => {
-    const store = this.props.store;
-    e.preventDefault();
-    const { name } = this.state;
-    if (name === '') {
-      store.dispatch(SearchingActions.removeSearchingPlayer('remove'));
-    } else {
-      store.dispatch(SearchingActions.addSearchingPlayer(name));
-    }
-
-    // store.dispatch(SearchingActions.addSearchingNation('All'));
-    // store.dispatch(SearchingActions.addSearchingLeague('All'));
-    // store.dispatch(SearchingActions.addSearchingPosition('All'));
-    // store.dispatch(SearchingActions.addSearchingClub('All'));
+    store.dispatch(SearchingActions.addSearchingPlayer(value));
   }
 
   render() {
-    const {label} = this.props;
+    const { label } = this.props;
     return (
       <div>
-        <Form onSubmit={this.onSubmit}>
-          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-            <Input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Search by Name"
-              onChange={this.handleChange}/>
-          </FormGroup>
-        </Form>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+          <Input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Search by Name"
+            onChange={this.handleChange}/>
+        </FormGroup>
 			</div>
     );
   }

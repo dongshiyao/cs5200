@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form } from 'reactstrap';
+import { Form, Button } from 'reactstrap';
 import axios from 'axios';
 
 import SearchingDropdownContainer from '../containers/searching_dropdown_container';
@@ -19,7 +19,10 @@ class SearchingBar extends Component {
       nationFilters: this.props.nationFilters,
       clubFilters: this.props.clubFilters,
       leagueFilters: this.props.leagueFilters,
+      pageContent: this.props.pageContent
     }
+    this.onSearch = this.onSearch.bind(this);
+    this.onClear = this.onClear.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -28,8 +31,13 @@ class SearchingBar extends Component {
       positionFilters: nextProps.positionFilters,
       nationFilters: nextProps.nationFilters,
       clubFilters: nextProps.clubFilters,
-      leagueFilters: nextProps.leagueFilters
+      leagueFilters: nextProps.leagueFilters,
+      pageContent: nextProps.pageContent
     });
+  }
+
+  onSearch(e) {
+    e.preventDefault();
 
     const {
       playerFilters,
@@ -37,17 +45,9 @@ class SearchingBar extends Component {
       nationFilters,
       clubFilters,
       leagueFilters
-    } = nextProps;
+    } = this.state;
 
     const store = this.props.store;
-    // if (playerFilters) {
-    //   const url = "http://localhost:8080/players/searchPlayerByName?input_player_name="+playerFilters;
-    //   axios.get(url).then(res => {
-    //     store.dispatch(SearchingActions.setPlayersResults(res.data));
-    //   }, err => {
-    //     console.log("SearchingBar got an error: ",err);
-    //   });
-    // } else {
     let url = "http://localhost:8080/players/searchPlayerByCriteria?"
     let tigger = false;
     if (playerFilters) {
@@ -73,11 +73,30 @@ class SearchingBar extends Component {
     url = url.slice(0, -1);
     url = tigger ? url + "&sortCriteria=OVERALL" : url;
     axios.get(url).then(res => {
+      console.log("GET IN SEARCHINGBAR ONSEARCH");
       store.dispatch(SearchingActions.setPlayersResults(res.data));
     }, err => {
       console.log("SearchingBar got an error: ", err);
     });
-    // }
+  }
+
+  onClear(e) {
+    console.log('---CLEAR---');
+    console.log(this.state.pageContent);
+    const  { store } = this.props;
+    const { pageContent } = this.state;
+    store.dispatch(SearchingActions.removeAllFilters());
+    if (pageContent === 'PLAYERSDB') {
+      console.log("playersdb!!!!!!!");
+      const url = "http://localhost:8080/players/searchPlayerByCriteria";
+      axios.get(url).then(res => {
+        store.dispatch(SearchingActions.setPlayersResults(res.data));
+      }, err => {
+        console.log("SearchingBar got an error: ", err);
+      });
+    } else {
+      store.dispatch(SearchingActions.setPlayersResults([]));
+    }
   }
 
   render() {
@@ -111,8 +130,8 @@ class SearchingBar extends Component {
     return (
       <div className='searching_bar_container'>
         <div className='searching_input'>
-          <Form inline>
-            <SearchingInputContainer store={this.props.store} />
+          <Form inline onSubmit={this.onSearch}>
+            <SearchingInputContainer store={this.props.store} playerSelected={this.state.playerFilters}/>
             <SearchingDropdownContainer
               store={this.props.store}
               label='Position' />
@@ -126,9 +145,12 @@ class SearchingBar extends Component {
               store={this.props.store}
               label='Club'
               leagueSelected={this.state.leagueFilters}/>
+            <Button>Search</Button>
           </Form>
         </div>
         <div className='filter_summary'>
+          <a onClick={this.onClear}>Remove All Filters</a>
+          {' -- '}
           {filterContent}
         </div>
 			</div>

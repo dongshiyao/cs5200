@@ -67,7 +67,6 @@ class SearchingDropdown extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { leagueSelected } = nextProps;
-    console.log('leagueSelected', leagueSelected);
     if (leagueSelected) {
       const url = "http://localhost:8080/players/searchClubByLeagueName?league="+leagueSelected;
       axios.get(url).then(res => {
@@ -93,22 +92,18 @@ class SearchingDropdown extends Component {
     switch (label) {
       case "Position": {
         store.dispatch(SearchingActions.addSearchingPosition(selected));
-        // store.dispatch(SearchingActions.removeSearchingPlayer('remove'));
         break;
       }
       case "Nation": {
         store.dispatch(SearchingActions.addSearchingNation(selected));
-        // store.dispatch(SearchingActions.removeSearchingPlayer('remove'));
         break;
       }
       case "League": {
         store.dispatch(SearchingActions.addSearchingLeague(selected));
-        // store.dispatch(SearchingActions.removeSearchingPlayer('remove'));
         break;
       }
       case "Club": {
         store.dispatch(SearchingActions.addSearchingClub(selected));
-        // store.dispatch(SearchingActions.removeSearchingPlayer('remove'));
         break;
       }
     }
@@ -116,7 +111,7 @@ class SearchingDropdown extends Component {
 
   render() {
     const { label } = this.props;
-    const { items } = this.state;
+    const { items, optionSelected } = this.state;
 
     return (
       <div>
