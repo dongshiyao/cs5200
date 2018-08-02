@@ -149,7 +149,7 @@ class SearchingBar extends Component {
           </Form>
         </div>
         <div className='filter_summary'>
-          <a onClick={this.onClear}>Remove All Filters</a>
+          <Button onClick={this.onClear}>Remove All Filters</Button>
           {' -- '}
           {filterContent}
         </div>
