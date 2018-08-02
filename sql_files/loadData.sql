@@ -2,7 +2,7 @@ Use ProjectFIFA;
 
 # Load data into Player
 
-LOAD DATA INFILE '/tmp/complete1.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/complete1.csv'
   INTO TABLE Player
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n' 
@@ -24,7 +24,7 @@ LOAD DATA INFILE '/tmp/complete1.csv'
           PositionScoreID=@PositionScoreID;
 
 # load Stat
-LOAD DATA INFILE '/tmp/complete1.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/complete1.csv'
   INTO TABLE Stat
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n' 
@@ -35,7 +35,7 @@ LOAD DATA INFILE '/tmp/complete1.csv'
           PlayerID=@ID;
           
 # load GkStat
-LOAD DATA INFILE '/tmp/gk.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/gk.csv'
   INTO TABLE GKStat
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n' 
@@ -50,7 +50,7 @@ LOAD DATA INFILE '/tmp/gk.csv'
   		  PositioningID= @PosioningID;
           
 # load NonGkStat
-LOAD DATA INFILE '/tmp/nongk.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/nongk.csv'
   INTO TABLE NonGKStat
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n' 
@@ -66,7 +66,7 @@ LOAD DATA INFILE '/tmp/nongk.csv'
   		  #PositionScoreID=@PositionScoreID;
           
 # load Diving
-LOAD DATA INFILE '/tmp/gk.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/gk.csv'
   INTO TABLE Diving
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n'
@@ -79,7 +79,7 @@ LOAD DATA INFILE '/tmp/gk.csv'
           StatID=@StatID;
 
 # load Handling;
-LOAD DATA INFILE '/tmp/gk.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/gk.csv'
   INTO TABLE Handling
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n'
@@ -96,7 +96,7 @@ LOAD DATA INFILE '/tmp/gk.csv'
           StatID=@StatID;
 
 # load Speed;
-LOAD DATA INFILE '/tmp/gk.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/gk.csv'
   INTO TABLE Speed
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n'
@@ -112,7 +112,7 @@ LOAD DATA INFILE '/tmp/gk.csv'
           StatID=@StatID;
   
 # load Reflexes;
-LOAD DATA INFILE '/tmp/gk.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/gk.csv'
   INTO TABLE Reflexes
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n'
@@ -129,7 +129,7 @@ LOAD DATA INFILE '/tmp/gk.csv'
           StatID=@StatID;
 
 # load Kicking;
-LOAD DATA INFILE '/tmp/gk.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/gk.csv'
   INTO TABLE Kicking
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n'
@@ -146,7 +146,7 @@ LOAD DATA INFILE '/tmp/gk.csv'
           StatID=@StatID;
 
 # load Positioning;
-LOAD DATA INFILE '/tmp/gk.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/gk.csv'
   INTO TABLE Positioning
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n'
@@ -161,7 +161,7 @@ LOAD DATA INFILE '/tmp/gk.csv'
           StatID=@StatID;
 
 # load Pace;
-LOAD DATA INFILE '/tmp/nongk.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/nongk.csv'
   INTO TABLE Pace
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n' 
@@ -174,7 +174,7 @@ LOAD DATA INFILE '/tmp/nongk.csv'
           StatID=@StatID;
 
 # load Shooting;
-LOAD DATA INFILE '/tmp/nongk.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/nongk.csv'
   INTO TABLE Shooting
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n' 
@@ -191,7 +191,7 @@ LOAD DATA INFILE '/tmp/nongk.csv'
           StatID=@StatID;
 
 # load Passing;
-LOAD DATA INFILE '/tmp/nongk.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/nongk.csv'
   INTO TABLE Passing
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n' 
@@ -208,7 +208,7 @@ LOAD DATA INFILE '/tmp/nongk.csv'
           StatID=@StatID;
   
 # load Dribbling;
-LOAD DATA INFILE '/tmp/nongk.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/nongk.csv'
   INTO TABLE Dribbling
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n' 
@@ -225,7 +225,7 @@ LOAD DATA INFILE '/tmp/nongk.csv'
           StatID=@StatID;
 
 # load Physicality;
-LOAD DATA INFILE '/tmp/nongk.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/nongk.csv'
   INTO TABLE Physicality
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n' 
@@ -240,7 +240,7 @@ LOAD DATA INFILE '/tmp/nongk.csv'
           StatID=@StatID;
 
 # load Defending;
-LOAD DATA INFILE '/tmp/nongk.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/nongk.csv'
   INTO TABLE Defending
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n' 
@@ -256,7 +256,7 @@ LOAD DATA INFILE '/tmp/nongk.csv'
           StatID=@StatID;
  
 # load PositionScore;
-LOAD DATA INFILE '/tmp/complete1.csv'
+LOAD DATA INFILE '~/Desktop/courses/CS5200/project/cs5200/csv_files/complete1.csv'
   INTO TABLE PositionScore
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n' 
